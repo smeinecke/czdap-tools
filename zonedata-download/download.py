@@ -49,10 +49,12 @@ for url in urls:
   r = s.get(config['base_url'] + url)
   if r.status_code == 200:
     parsed_url = urlparse(r.url)
-    filename = os.path.basename(parsed_url.path)
+    filename = r.headers['content-disposition'].split(' ')[1].split('=')[1][1:-1]
+    #filename = os.path.basename(parsed_url.path)
     directory = './zonefiles'
     if not os.path.exists(directory):
       os.makedirs(directory)
+    print "downloading "+ filename
     path = directory + '/' + filename + '.txt.gz'
     with open(path, 'wb') as f:
         for chunk in r.iter_content(1024):
