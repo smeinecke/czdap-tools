@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8
-
 import requests, json, sys, os, re, datetime
-from urlparse import urlparse
 
 class czdsException(Exception):
     pass
