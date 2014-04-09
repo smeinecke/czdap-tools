@@ -6,7 +6,7 @@ class czdsException(Exception):
     pass
 
 class czdsDownloader(object):
-    file_syntax_re = re.compile("""^(\d{8})\-([a-z\-]+)\-zone\-data\.txt\.gz""", re.IGNORECASE)
+    file_syntax_re = re.compile("""^(\d{8})\-([a-z\-0-9]+)\-zone\-data\.txt\.gz""", re.IGNORECASE)
     content_disposition_header_re = re.compile('^attachment; filename="([^"]+)"', re.IGNORECASE)
 
     def __init__(self):
