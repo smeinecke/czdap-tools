@@ -141,6 +141,8 @@ class czdsWebsite(object):
                     if ip:
                         ips.append(ip)
                 vl = ips
+            elif 'Expires' in ky:
+                vl = datetime.datetime.strptime(vl, "%d %B %Y, %H:%M:%S %Z")
             else:
                 vl = self.remove_tags(vl).strip()
 
