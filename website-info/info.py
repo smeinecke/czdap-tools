@@ -206,9 +206,6 @@ class czdsWebsite(object):
         for item in reqData['select_tlds']:
             self.br.find_control(name=item).items[0].selected = True
 
-        self.br.set_debug_http(True)
-        self.br.set_debug_redirects(True)
-        self.br.set_debug_responses(True)
         for ctl in self.br.form.controls:
             if ctl.name == 'op' and ctl.value == 'Request zone files':
                 res = self.br.open(ctl._click(self.br.form, (1,1), 'request', self.br.form._request_class))
@@ -220,7 +217,7 @@ class czdsWebsite(object):
     """ print current open / expired requests
     """
     def printData(self, data):
-        for ky in ['open', 'expired', 'denied']:
+        for ky in ['open', 'expired']:
             if ky in data :
                 print ky + ':'
                 for item in data[ky]:
